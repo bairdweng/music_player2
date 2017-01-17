@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface HeaderView : UIView
-
+@property(nonatomic,strong)NSString *title;
 @end

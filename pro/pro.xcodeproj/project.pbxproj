@@ -54,6 +54,10 @@
 		992CC4431E1C911B003103B8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 992CC4421E1C911B003103B8 /* Images.xcassets */; };
 		993F94F61E2D0FF600D9818E /* UIColor+hexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 993F94F51E2D0FF600D9818E /* UIColor+hexColor.m */; };
 		998C39621E252E630080A9A8 /* ServiceManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 998C39611E252E630080A9A8 /* ServiceManage.m */; };
+		99E9D82F1E2E60A200826FFB /* EFCircularSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 99E9D82E1E2E60A200826FFB /* EFCircularSliderView.m */; };
+		99E9D8321E2E681D00826FFB /* ColorButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = 99E9D8311E2E681D00826FFB /* ColorButtons.m */; };
+		99E9D8351E2E6C2800826FFB /* BLSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 99E9D8341E2E6C2800826FFB /* BLSliderView.m */; };
+		99E9D8381E2E727200826FFB /* ControBtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 99E9D8371E2E727200826FFB /* ControBtnView.m */; };
 		99F6A8931E2D012B0002F477 /* NewColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99F6A8921E2D012B0002F477 /* NewColorViewController.m */; };
 		99F6A8961E2D026E0002F477 /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 99F6A8951E2D026E0002F477 /* HeaderView.m */; };
 /* End PBXBuildFile section */
@@ -153,6 +157,14 @@
 		993F94F51E2D0FF600D9818E /* UIColor+hexColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+hexColor.m"; sourceTree = "<group>"; };
 		998C39601E252E630080A9A8 /* ServiceManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceManage.h; path = ../../../Resorce/ServiceManage.h; sourceTree = "<group>"; };
 		998C39611E252E630080A9A8 /* ServiceManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceManage.m; path = ../../../Resorce/ServiceManage.m; sourceTree = "<group>"; };
+		99E9D82D1E2E60A200826FFB /* EFCircularSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EFCircularSliderView.h; sourceTree = "<group>"; };
+		99E9D82E1E2E60A200826FFB /* EFCircularSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EFCircularSliderView.m; sourceTree = "<group>"; };
+		99E9D8301E2E681D00826FFB /* ColorButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorButtons.h; sourceTree = "<group>"; };
+		99E9D8311E2E681D00826FFB /* ColorButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorButtons.m; sourceTree = "<group>"; };
+		99E9D8331E2E6C2800826FFB /* BLSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLSliderView.h; sourceTree = "<group>"; };
+		99E9D8341E2E6C2800826FFB /* BLSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLSliderView.m; sourceTree = "<group>"; };
+		99E9D8361E2E727200826FFB /* ControBtnView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControBtnView.h; sourceTree = "<group>"; };
+		99E9D8371E2E727200826FFB /* ControBtnView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControBtnView.m; sourceTree = "<group>"; };
 		99F6A8911E2D012B0002F477 /* NewColorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewColorViewController.h; sourceTree = "<group>"; };
 		99F6A8921E2D012B0002F477 /* NewColorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewColorViewController.m; sourceTree = "<group>"; };
 		99F6A8941E2D026E0002F477 /* HeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderView.h; sourceTree = "<group>"; };
@@ -270,6 +282,14 @@
 			children = (
 				99F6A8941E2D026E0002F477 /* HeaderView.h */,
 				99F6A8951E2D026E0002F477 /* HeaderView.m */,
+				99E9D82D1E2E60A200826FFB /* EFCircularSliderView.h */,
+				99E9D82E1E2E60A200826FFB /* EFCircularSliderView.m */,
+				99E9D8301E2E681D00826FFB /* ColorButtons.h */,
+				99E9D8311E2E681D00826FFB /* ColorButtons.m */,
+				99E9D8331E2E6C2800826FFB /* BLSliderView.h */,
+				99E9D8341E2E6C2800826FFB /* BLSliderView.m */,
+				99E9D8361E2E727200826FFB /* ControBtnView.h */,
+				99E9D8371E2E727200826FFB /* ControBtnView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -785,12 +805,16 @@
 				4278ADAB1DAB7E9C00A7184B /* VoiceHelper.m in Sources */,
 				9911F9821E13B96100A08E3E /* BaseHelper.m in Sources */,
 				02E8EE601D8A7EC500C65F82 /* AppDelegate.m in Sources */,
+				99E9D8351E2E6C2800826FFB /* BLSliderView.m in Sources */,
 				99F6A8931E2D012B0002F477 /* NewColorViewController.m in Sources */,
+				99E9D8381E2E727200826FFB /* ControBtnView.m in Sources */,
 				993F94F61E2D0FF600D9818E /* UIColor+hexColor.m in Sources */,
 				02E8EE6B1D8A803200C65F82 /* ColorViewController.m in Sources */,
 				990D37A91E1E2D3900926D08 /* BabyCallback.m in Sources */,
 				9911F97B1E13B96100A08E3E /* UIView+Animations.m in Sources */,
+				99E9D82F1E2E60A200826FFB /* EFCircularSliderView.m in Sources */,
 				422037EB1D99164000377771 /* CMDModel.m in Sources */,
+				99E9D8321E2E681D00826FFB /* ColorButtons.m in Sources */,
 				990D37B01E1E2D3900926D08 /* BabyToy.m in Sources */,
 				9911F97F1E13B96100A08E3E /* BaseEntity.m in Sources */,
 			);

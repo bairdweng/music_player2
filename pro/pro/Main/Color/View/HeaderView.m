@@ -29,7 +29,6 @@
         }];
         
         UILabel *titleLable = [[UILabel alloc]init];
-        titleLable.text = @"LED Control";
         titleLable.textColor = [UIColor whiteColor];
         [self addSubview:titleLable];
         [titleLable mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -49,6 +48,10 @@
         
     }
     return self;
+}
+-(void)setTitle:(NSString *)title{
+    _title = title;
+    self.titleLabel.text = title;
 }
 /*
 // Only override drawRect: if you perform custom drawing.
