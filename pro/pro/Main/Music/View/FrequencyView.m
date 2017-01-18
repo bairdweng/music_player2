@@ -40,7 +40,7 @@ const static CGFloat height = 200;
 #pragma mark - private
 - (void)configSelf {
     //self.backgroundColor = [UIColor redColor];
-    _backColors = @[[UIColor purpleColor], [UIColor blueColor], [UIColor greenColor], [UIColor yellowColor], [UIColor redColor]];
+    _backColors = @[THETIMECOLOR, THETIMECOLOR, THETIMECOLOR, THETIMECOLOR, THETIMECOLOR];
 }
 
 - (void)configSubview {

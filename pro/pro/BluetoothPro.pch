@@ -42,8 +42,10 @@
 #import "UIColor+hexColor.h"
 
 
+
+
 #define channelOnPeropheralView @"peripheralView"
 
-#define   THETIMECOLOR [UIColor greenColor]//主题颜色
+#define   THETIMECOLOR [UIColor colorWithHexString:@"018A8A"]//主题颜色
 #define   ISTOTAKEEFFECT YES//是否生效
 #endif

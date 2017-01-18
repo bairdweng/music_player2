@@ -19,7 +19,8 @@
         imageView.frame = frame;
         imageView.image = [UIImage imageNamed:@"a16"];
         [self addSubview:imageView];
-        CGFloat width = self.frame.size.width-70;
+        CGFloat width = self.frame.size.width-20;
+        
         EFCircularSlider *circularSlider = [[EFCircularSlider alloc]initWithFrame:CGRectMake((self.frame.size.width-width)/2, (self.frame.size.height-width)/2, width, width)];
         [circularSlider addTarget:self action:@selector(circularSlidervalueChanged:) forControlEvents:UIControlEventValueChanged];
         circularSlider.handleType = bigCircle;

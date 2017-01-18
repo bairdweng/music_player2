@@ -12,9 +12,6 @@
 -(id)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self){
-       
-        self.backgroundColor = [UIColor blackColor];
-        
         UIImageView *imageView_1 = [[UIImageView alloc]init];
         [imageView_1 setImage:[UIImage imageNamed:@"brightness"]];
         [self addSubview:imageView_1];
@@ -39,6 +36,7 @@
         
         
         UISlider *slider_1 = [UISlider new];
+        slider_1.minimumTrackTintColor = THETIMECOLOR;
         [self addSubview:slider_1];
         [slider_1 mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(imageView_1.mas_right).offset(10);
@@ -48,6 +46,7 @@
         
         UISlider *slider_2 = [UISlider new];
         [self addSubview:slider_2];
+        slider_2.minimumTrackTintColor = THETIMECOLOR;
         [slider_2 mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(imageView_2.mas_right).offset(10);
             make.centerY.equalTo(imageView_2);

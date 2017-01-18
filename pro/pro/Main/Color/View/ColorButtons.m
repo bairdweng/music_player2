@@ -13,7 +13,6 @@
     self = [super initWithFrame:frame];
     if (self){
         CGSize size = CGSizeMake(20, 25);
-        self.backgroundColor = [UIColor blackColor];
         UIColor *pick = [UIColor colorWithRed:1.0 green:0 blue:1.0 alpha:1.0];
         UIColor *lowblue = [UIColor colorWithRed:0 green:1.0 blue:1.0 alpha:1.0];
         NSArray *Colors = @[[UIColor redColor], [UIColor blueColor], [UIColor greenColor], pick, [UIColor yellowColor], lowblue, [UIColor whiteColor]];

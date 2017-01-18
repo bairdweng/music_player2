@@ -13,6 +13,7 @@
 #import "CMDModel.h"
 #import "BlueServerManager.h"
 #import "MusicListViewController.h"
+#import "HeaderView.h"
 #define BUTTON_SIZE CGSizeMake(50, 50);
 
 const static CGFloat button_margin = 30;
@@ -54,6 +55,17 @@ const static CGFloat min_height = 5;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor colorWithHexString:@"282828"];
+
+    
+    HeaderView *headerView = [[HeaderView alloc]initWithFrame:CGRectMake(0, 20, SCREEN_WIDTH, 55)];
+    headerView.title = @"LED Control";
+    [self.view addSubview:headerView];
+    
+    
+    
+    
     VoiceHelper *voiceHelper = [VoiceHelper sharedInstance];
     voiceHelper.delegate = self;
     _showScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-48)];
@@ -63,7 +75,7 @@ const static CGFloat min_height = 5;
     }
     _showScrollView.contentSize = CGSizeMake(self.view.frame.size.width, content);
     [self.view addSubview:_showScrollView];
-    [self configSelf];
+//    [self configSelf];
     [self configSubview];
 //    [self configMusicListView];//屏蔽音乐
     _isplayer = NO;

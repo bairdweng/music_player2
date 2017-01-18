@@ -72,7 +72,6 @@
     
     
     ControBtnView *controBtnView = [[ControBtnView alloc]initWithFrame:CGRectMake((SCREEN_WIDTH-SliderView_Width)/2, ControBtn_Y, ControBtn_Width, 100)];
-    controBtnView.backgroundColor = [UIColor redColor];
     [_showScrollView addSubview:controBtnView];
     
     
