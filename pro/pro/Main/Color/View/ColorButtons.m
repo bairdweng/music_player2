@@ -13,6 +13,7 @@
 
 @interface ColorButtons(){
     NSArray *_Colors;
+    ColorButtonsEventBlock _block;
 }
 @end
 
@@ -21,7 +22,7 @@
 -(id)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self){
-        CGSize size = CGSizeMake(25, 25);
+        CGSize size = CGSizeMake(20, 40);
         UIColor *pick = [UIColor colorWithRed:1.0 green:0 blue:1.0 alpha:1.0];
         UIColor *lowblue = [UIColor colorWithRed:0 green:1.0 blue:1.0 alpha:1.0];
         _Colors = @[[UIColor redColor], [UIColor blueColor], [UIColor greenColor], pick, [UIColor yellowColor], lowblue, [UIColor whiteColor]];
@@ -51,13 +52,9 @@
             btn.selected = NO;
         }
     }
-    NSInteger index = sender.tag - 100;
-    NSData *sendData = [[CMDModel sharedInstance] singleColors][index];
-    Byte *testByte = (Byte *)[sendData bytes];
-    //模式位。
-    testByte[1] = 5;
-    NSData *newData =  [[NSData alloc] initWithBytes:testByte length:8];
-    [[BlueServerManager sharedInstance] sendData:newData];
+    if (_block) {
+        _block(sender.tag-100);
+    }
 }
 //按钮复位。
 -(void)reset{
@@ -70,6 +67,9 @@
     _btnSelectIndex = btnSelectIndex;
     UIButton *btn = [self viewWithTag:100+_btnSelectIndex];
     [self ClickOntheBtn:btn];
+}
+-(void)getEventBlck:(ColorButtonsEventBlock)block{
+    _block = block;
 }
 /*
 // Only override drawRect: if you perform custom drawing.

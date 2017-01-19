@@ -24,8 +24,8 @@
         [self addSubview:logoImage];
         [logoImage mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(@10);
-            make.top.equalTo(@5);
-            make.width.height.equalTo(@40);
+            make.top.equalTo(@25);
+            make.width.height.equalTo(@30);
         }];
         
         UILabel *titleLable = [[UILabel alloc]init];

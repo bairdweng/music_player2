@@ -7,7 +7,8 @@
 //
 
 #import "ControBtnView.h"
-
+#import "BlueServerManager.h"
+#import "CMDModel.h"
 @implementation ControBtnView
 -(id)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
@@ -36,6 +37,7 @@
         
         
         UIButton *btn_1 = [UIButton buttonWithType:UIButtonTypeCustom];
+      
         [btn_1 setImage:[UIImage imageNamed:@"f2"] forState:UIControlStateNormal];
         [self addSubview:btn_1];
         
@@ -50,6 +52,18 @@
         UIButton *btn_4 = [UIButton buttonWithType:UIButtonTypeCustom];
         [btn_4 setImage:[UIImage imageNamed:@"newf3"] forState:UIControlStateNormal];
         [self addSubview:btn_4];
+        
+        btn_1.tag = 200;
+        [btn_1 addTarget:self action:@selector(ClickOntheController:) forControlEvents:UIControlEventTouchUpInside];
+        
+        btn_2.tag = 201;
+        [btn_2 addTarget:self action:@selector(ClickOntheController:) forControlEvents:UIControlEventTouchUpInside];
+        
+        btn_3.tag = 202;
+        [btn_3 addTarget:self action:@selector(ClickOntheController:) forControlEvents:UIControlEventTouchUpInside];
+        
+        btn_4.tag = 203;
+        [btn_4 addTarget:self action:@selector(ClickOntheController:) forControlEvents:UIControlEventTouchUpInside];
         
         [btn_1 mas_makeConstraints:^(MASConstraintMaker *make) {
             make.width.height.equalTo(@50);
@@ -77,6 +91,54 @@
         }];
     }
     return self;
+}
+
+
+-(void)ClickOntheController:(UIButton *)sender{
+    for (int i = 0; i<4; i++) {
+        UIButton *btn = [self viewWithTag:i+200];
+        btn.layer.cornerRadius = 25;
+        btn.layer.masksToBounds = YES;
+        if (sender == btn) {
+            btn.backgroundColor = THETIMECOLOR;
+        }
+        else{
+            btn.backgroundColor = [UIColor clearColor];
+        }
+    }
+    NSInteger index = sender.tag - 200;
+    CMDModel *cmd = [CMDModel sharedInstance];
+    NSData *sendData;
+    
+    switch (index) {
+        case 0:{
+            sendData = cmd.threeBlinkCMD;//单色闪烁
+        }
+            break;
+        case 1:{
+            sendData = cmd.sevenBlinkCMD;//多彩闪烁。
+        }
+            break;
+        case 2:{
+            sendData = cmd.threeBreathCMD;//单色渐变。
+        }
+            break;
+        case 3:{
+            sendData = cmd.sevenBreathCMD;//多彩渐变。
+        }
+            break;
+            
+        default:
+            break;
+    }
+    [BlueServerManager sharedInstance].mode = index;
+    [[BlueServerManager sharedInstance] sendData:sendData];
+}
+
+-(void)setControMode:(NSInteger)controMode{
+    _controMode = controMode;
+    UIButton *btn = [self viewWithTag:_controMode+200];
+    [self ClickOntheController:btn];
 }
 /*
 // Only override drawRect: if you perform custom drawing.

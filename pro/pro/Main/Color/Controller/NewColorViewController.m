@@ -28,6 +28,7 @@
     ControBtnView *_controBtnView;
     DeviceTableView *_deviceTableView;
     BOOL _showDevice;
+    NSData *_currentData;
 }
 @property(nonatomic,assign)BOOL ShowDeviceTableView;
 @property (nonatomic, assign) BOOL isShow;
@@ -46,7 +47,21 @@
     }
     return self;
 }
-
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    if(_currentData){
+        
+        Byte *testByte = (Byte *)[_currentData bytes];
+        //模式位。
+        testByte[1] = [BlueServerManager sharedInstance].modeOftype;
+        NSData *newData =  [[NSData alloc] initWithBytes:testByte length:8];
+        [[BlueServerManager sharedInstance] sendData:newData];
+    }
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    _currentData = [[CMDModel sharedInstance] getCuttentData];
+}
 -(void)setShowDeviceTableView:(BOOL)ShowDeviceTableView{
     _ShowDeviceTableView = ShowDeviceTableView;
     _showDevice = _ShowDeviceTableView;
@@ -74,9 +89,9 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor colorWithHexString:@"282828"];
-    HeaderView *headerView = [[HeaderView alloc]initWithFrame:CGRectMake(0, 20, SCREEN_WIDTH, 55)];
-    headerView.title = @"LED Control";
+    self.view.backgroundColor = [UIColor blackColor];
+    HeaderView *headerView = [[HeaderView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 64)];
+    headerView.title = @"RockFun";
     [self.view addSubview:headerView];
     
     
@@ -85,7 +100,7 @@
     
     
     _leftBtn = [UIButton new];
-    CGRect frame = CGRectMake(15, 15, 60, 26);
+    CGRect frame = CGRectMake(15, 10, 60, 26);
     _leftBtn.frame = frame;
     UIImage *img = [UIImage imageNamed:@"backto_off"];
     [_leftBtn setBackgroundImage:img forState:UIControlStateNormal];
@@ -103,25 +118,49 @@
     }];
     
     CGFloat View_JG = 0;
-    CGFloat size_size = SCREEN_WIDTH * 0.78;
+    
+    if (SCREEN_HEIGHT >= 736) {
+        View_JG = 10;
+    }
+    else if (SCREEN_HEIGHT == 667){
+        View_JG = 5;
+    }
+    CGFloat size_size = SCREEN_WIDTH * 0.7;
     _efCircularSliderView = [[EFCircularSliderView alloc]initWithFrame:CGRectMake((SCREEN_WIDTH-size_size)/2, CGRectGetMaxY(_leftBtn.frame)+10, size_size, size_size)];
     [_showScrollView addSubview:_efCircularSliderView];
     
-    CGFloat colorButton_Width = SCREEN_WIDTH * 0.9;
+    CGFloat colorButton_Width = SCREEN_WIDTH * 0.8;
     CGFloat ButtonView_Y = CGRectGetMaxY(_efCircularSliderView.frame)+View_JG;
+    
     _colorButtons= [[ColorButtons alloc]initWithFrame:CGRectMake((SCREEN_WIDTH-colorButton_Width)/2, ButtonView_Y, colorButton_Width, 50)];
     [_showScrollView addSubview:_colorButtons];
+    
+    [_colorButtons getEventBlck:^(NSInteger index){
+        NSData *sendData = [[CMDModel sharedInstance] singleColors][index];
+        Byte *testByte = (Byte *)[sendData bytes];
+        if ([BlueServerManager sharedInstance].mode == 1) {
+            [BlueServerManager sharedInstance].mode = 0;
+            _controBtnView.controMode = 0;
+        }
+        else if ([BlueServerManager sharedInstance].mode == 3){
+            [BlueServerManager sharedInstance].mode = 2;
+            _controBtnView.controMode = 2;
+        }
+        testByte[1] = [BlueServerManager sharedInstance].modeOftype;
+        NSData *newData =  [[NSData alloc] initWithBytes:testByte length:8];
+        [[BlueServerManager sharedInstance] sendData:newData];
+    }];
     
     
     CGFloat SliderView_Width = SCREEN_WIDTH * 0.95;
     CGFloat SliderView_Y = CGRectGetMaxY(_colorButtons.frame)+View_JG;
-    BLSliderView *SliderView = [[BLSliderView alloc]initWithFrame:CGRectMake((SCREEN_WIDTH-SliderView_Width)/2, SliderView_Y, SliderView_Width, 100)];
-    [_showScrollView addSubview:SliderView];
+    _blSliderView = [[BLSliderView alloc]initWithFrame:CGRectMake((SCREEN_WIDTH-SliderView_Width)/2, SliderView_Y, SliderView_Width, 90)];
+    [_showScrollView addSubview:_blSliderView];
     
     CGFloat ControBtn_Width = SCREEN_WIDTH * 0.95;
-    CGFloat ControBtn_Y = CGRectGetMaxY(SliderView.frame)+View_JG;
+    CGFloat ControBtn_Y = CGRectGetMaxY(_blSliderView.frame)+View_JG;
     
-    _controBtnView = [[ControBtnView alloc]initWithFrame:CGRectMake((SCREEN_WIDTH-SliderView_Width)/2, ControBtn_Y, ControBtn_Width, 100)];
+    _controBtnView = [[ControBtnView alloc]initWithFrame:CGRectMake((SCREEN_WIDTH-SliderView_Width)/2, ControBtn_Y, ControBtn_Width, 80)];
     [_showScrollView addSubview:_controBtnView];
     _showScrollView.contentSize = CGSizeMake(self.view.frame.size.width, CGRectGetMaxY(_controBtnView.frame)+10);
     
@@ -142,6 +181,7 @@
         [WeakSelf showMiddleHint:@"正在连接" WithLoading:YES];
         [BlueServerManager sharedInstance].isSender = YES;
     }];
+    [self bluetoothConfig];
     // Do any additional setup after loading the view.
 }
 /**
@@ -243,7 +283,7 @@
 }
 //连接成功的处理
 -(void)ConnectSucessDeal{
-    self.isShow = NO;
+    self.ShowDeviceTableView = NO;
     _titleLabel.hidden = YES;
     [_leftBtn setBackgroundImage:[UIImage imageNamed:@"backto"] forState:UIControlStateNormal];
     [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:@"isConnecttedKey"];
@@ -252,7 +292,7 @@
 -(void)ConnectSucessError{
     _titleLabel.hidden = NO;
     [_leftBtn setBackgroundImage:[UIImage imageNamed:@"backto_off.png"] forState:UIControlStateNormal];
-    [[NSUserDefaults standardUserDefaults] setObject:@NO forKey:@"isConnecttedKey"];
+    [[NSUserDefaults standardUserDefaults] setObject:@NO forKey:isConnectted];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 /**
@@ -260,6 +300,7 @@
  @param bytes
  */
 -(void)didSendQueryData:(Byte [])bytes{
+ 
     if(bytes[0] == 1) {
         [BlueServerManager sharedInstance].mode = 0;
     }
@@ -275,6 +316,7 @@
     else {
         return;
     }
+    _controBtnView.controMode = [BlueServerManager sharedInstance].mode;
     int progess = 0;
     if(bytes[1] == 255  && bytes[3] == 0) {
         progess = bytes[2];
@@ -298,7 +340,6 @@
     _blSliderView.SliderValue1 = bytes[4]/100.0;
     _blSliderView.SliderValue2 = bytes[5]/10.0;
     int btnTag = [self GetCololorBtn:bytes];
-    
     if (btnTag != -1){
         _colorButtons.btnSelectIndex = btnTag;
     }

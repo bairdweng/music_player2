@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^ColorButtonsEventBlock)(NSInteger index);
+
 @interface ColorButtons : UIView
 @property(nonatomic,assign)NSInteger btnSelectIndex;
+
+-(void)getEventBlck:(ColorButtonsEventBlock)block;
 -(void)reset;
 @end

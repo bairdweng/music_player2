@@ -43,6 +43,7 @@
 
 
 
+static NSString *const isConnectted = @"isConnecttedKey";
 
 #define channelOnPeropheralView @"peripheralView"
 

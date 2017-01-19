@@ -28,7 +28,7 @@ static NSString *const name = @"SH-HC-08";
 //发送数据。
 -(void)sendData:(NSData *)data{
     if (data&&self.currentPeripheral&&self.currentcharacteristic){
-        NSLog(@"result============%@",data);
+        NSLog(@"data============%@",data);
         Byte *testByte = (Byte *)[data bytes];
         for (int i = 0; i<[data length]; i++) {
             printf("testByte = %d\n",testByte[i]);
@@ -43,5 +43,28 @@ static NSString *const name = @"SH-HC-08";
         [self.currentPeripheral writeValue:data forCharacteristic:self.currentcharacteristic type:CBCharacteristicWriteWithoutResponse];
         [self.currentPeripheral readValueForCharacteristic:self.currentcharacteristic];
     }
+}
+-(NSInteger)modeOftype{
+    switch (self.mode) {
+        case 0:{
+            return 1;
+        }
+            break;
+        case 1:{
+            return 3;
+        }
+            break;
+        case 2:{
+            return 5;
+        }
+            break;
+        case 3:{
+            return 8;
+        }
+            break;
+        default:
+            break;
+    }
+    return 1;
 }
 @end

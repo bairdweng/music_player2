@@ -55,10 +55,8 @@ const static CGFloat min_height = 5;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor colorWithHexString:@"282828"];
-    HeaderView *headerView = [[HeaderView alloc]initWithFrame:CGRectMake(0, 20, SCREEN_WIDTH, 55)];
-    headerView.title = @"LED Control";
-    [self.view addSubview:headerView];
+    self.view.backgroundColor = [UIColor blackColor];
+
     
     
     
@@ -75,6 +73,10 @@ const static CGFloat min_height = 5;
     [self configSubview];
 //    [self configMusicListView];//屏蔽音乐
     _isplayer = NO;
+    
+    HeaderView *headerView = [[HeaderView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 64)];
+    headerView.title = @"RockFun";
+    [self.view addSubview:headerView];
 }
 -(void)configMusicListView{
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MusicList" bundle:[NSBundle mainBundle]];
@@ -121,7 +123,7 @@ const static CGFloat min_height = 5;
     else {
         _titleLabel.text = @"RGB Bluetooth";
         [[VoiceHelper sharedInstance] record];
-        [[BlueServerManager sharedInstance] sendData:[[CMDModel sharedInstance] musicCMD:0]];
+        [[BlueServerManager sharedInstance] sendData:[[CMDModel sharedInstance] musicCMD:0.1]];
     }
 }
 - (void)viewDidDisappear:(BOOL)animated {
@@ -188,7 +190,7 @@ const static CGFloat min_height = 5;
     if (!_isplayer){
         if (volume<_currentValue){
             volume = 0;
-        }
+        }        
         NSInteger temp = (NSInteger)((volume * _element_height) * 1.5);
         _frequencyView.volume = temp;
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -200,20 +202,10 @@ const static CGFloat min_height = 5;
                 sendData = [[CMDModel sharedInstance] musicCMD:volume];
             }
             [[BlueServerManager sharedInstance] sendData:sendData];
-        });
-        
-        
+        });        
     }
 }
 #pragma mark - private
-- (void)configSelf {
-    //self.view.backgroundColor = [UIColor colorWithRed:1.0 / 255 green:1.0 / 255 blue:51.0 / 255 alpha:0.9];
-    UIImageView *backImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, _showScrollView.contentSize.height)];
-    backImageView.image = [UIImage imageNamed:@"backgroud.jpg"];
-    [_showScrollView insertSubview:backImageView atIndex:0];
-    self.flag = NO;
-    _element_height = 240;
-}
 - (void)configSubview {
     [_showScrollView addSubview:self.singleButton];
     [_showScrollView addSubview:self.mulButton];
@@ -225,6 +217,31 @@ const static CGFloat min_height = 5;
     frame.origin.y = _showScrollView.contentSize.height-self.frequencyView.frame.size.height;
     self.frequencyView.frame = frame;
     [_showScrollView addSubview:self.frequencyView];
+    self.flag = NO;
+    _element_height = 240;
+    
+    
+    UILabel *Lable1 = [UILabel new];
+    Lable1.text = @"闪烁";
+    Lable1.textColor = [UIColor whiteColor];
+    Lable1.textAlignment = 1;
+    [_showScrollView addSubview:Lable1];
+    [Lable1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_singleButton.mas_bottom).offset(5);
+        make.centerX.equalTo(_singleButton);
+    }];
+    
+    
+    UILabel *Lable2 = [UILabel new];
+    Lable2.text = @"渐变";
+    Lable2.textColor = [UIColor whiteColor];
+    Lable2.textAlignment = 1;
+    [_showScrollView addSubview:Lable2];
+    [Lable2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_mulButton.mas_bottom).offset(5);
+        make.centerX.equalTo(_mulButton);
+    }];
+    
 }
 
 #pragma mark - getter
@@ -237,8 +254,8 @@ const static CGFloat min_height = 5;
         frame.origin.y = 120;
         _singleButton.frame = frame;
         [_singleButton setBackgroundImage:[UIImage imageNamed:@"f10"] forState:UIControlStateNormal];
-        //[_singleButton setBackgroundImage:[UIImage imageNamed:@"b3.png"] forState:UIControlStateNormal];
-//        _singleButton.backgroundColor = [UIColor redColor];
+        [_singleButton setBackgroundImage:[UIImage imageNamed:@"f11"] forState:UIControlStateSelected];
+
         [_singleButton addTarget:self action:@selector(clickSingleButton:) forControlEvents:UIControlEventTouchUpInside];
         _singleButton.layer.cornerRadius = 15;
         _singleButton.layer.masksToBounds = YES;
@@ -255,6 +272,7 @@ const static CGFloat min_height = 5;
         frame.origin.y = CGRectGetMinY(self.singleButton.frame);
         _mulButton.frame = frame;
         [_mulButton setBackgroundImage:[UIImage imageNamed:@"f12"] forState:UIControlStateNormal];
+        [_mulButton setBackgroundImage:[UIImage imageNamed:@"f13"] forState:UIControlStateSelected];
         [_mulButton addTarget:self action:@selector(clickMulButton:) forControlEvents:UIControlEventTouchUpInside];
         _mulButton.layer.cornerRadius = 15;
         _mulButton.layer.masksToBounds = YES;
@@ -340,12 +358,12 @@ const static CGFloat min_height = 5;
 - (void)setFlag:(BOOL)flag{
     _flag = flag;
     if (flag) {
-//        [self.singleButton setBackgroundImage:[UIImage imageNamed:@"selected.png"] forState:UIControlStateNormal];
-//        [self.mulButton setImage:[UIImage new] forState:UIControlStateNormal];
+        self.singleButton.selected = YES;
+        self.mulButton.selected = NO;
     }
     else {
-//        [self.singleButton setBackgroundImage:[UIImage new] forState:UIControlStateNormal];
-//        [self.mulButton setImage:[UIImage imageNamed:@"selected.png"] forState:UIControlStateNormal];
+        self.singleButton.selected = NO;
+        self.mulButton.selected = YES;
     }
 }
 

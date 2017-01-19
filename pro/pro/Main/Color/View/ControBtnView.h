@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ControBtnView : UIView
-
+@property(nonatomic,assign)NSInteger controMode;
 @end

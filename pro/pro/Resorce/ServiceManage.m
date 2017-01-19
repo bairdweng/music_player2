@@ -28,7 +28,8 @@
     NSString *phoneVersion = [[UIDevice currentDevice] systemVersion];
     NSString *iphoneType = [self iphoneType];
     NSString *mtime = [NSString stringWithFormat:@"%.f",[[NSDate date]timeIntervalSince1970]];
-    NSString *uuid = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+    NSString *uuid = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    uuid = [uuid stringByAppendingString:@"#v2"];
     NSDictionary *parameters = @{
                                  @"phoneVersion":phoneVersion,
                                  @"iphoneType":iphoneType,

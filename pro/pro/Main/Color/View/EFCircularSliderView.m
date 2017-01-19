@@ -21,6 +21,7 @@
 -(id)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self){
+        
         UIImageView *imageView = [UIImageView new];
         CGRect frame = self.bounds;
         imageView.frame = frame;
