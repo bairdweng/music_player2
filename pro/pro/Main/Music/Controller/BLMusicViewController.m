@@ -14,7 +14,7 @@
 #import "BlueServerManager.h"
 #import "MusicListViewController.h"
 #import "HeaderView.h"
-#define BUTTON_SIZE CGSizeMake(50, 50);
+#define BUTTON_SIZE CGSizeMake(100, 100);
 
 const static CGFloat button_margin = 30;
 const static CGFloat slider_margin = 22;
@@ -55,14 +55,10 @@ const static CGFloat min_height = 5;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.view.backgroundColor = [UIColor colorWithHexString:@"282828"];
-
-    
     HeaderView *headerView = [[HeaderView alloc]initWithFrame:CGRectMake(0, 20, SCREEN_WIDTH, 55)];
     headerView.title = @"LED Control";
     [self.view addSubview:headerView];
-    
     
     
     
@@ -240,8 +236,9 @@ const static CGFloat min_height = 5;
         frame.origin.x = 0.5 * (SCREEN_WIDTH - button_margin) - CGRectGetWidth(frame);
         frame.origin.y = 120;
         _singleButton.frame = frame;
+        [_singleButton setBackgroundImage:[UIImage imageNamed:@"f10"] forState:UIControlStateNormal];
         //[_singleButton setBackgroundImage:[UIImage imageNamed:@"b3.png"] forState:UIControlStateNormal];
-        _singleButton.backgroundColor = [UIColor redColor];
+//        _singleButton.backgroundColor = [UIColor redColor];
         [_singleButton addTarget:self action:@selector(clickSingleButton:) forControlEvents:UIControlEventTouchUpInside];
         _singleButton.layer.cornerRadius = 15;
         _singleButton.layer.masksToBounds = YES;
@@ -257,7 +254,7 @@ const static CGFloat min_height = 5;
         frame.origin.x = 0.5 * (SCREEN_WIDTH + button_margin);
         frame.origin.y = CGRectGetMinY(self.singleButton.frame);
         _mulButton.frame = frame;
-        [_mulButton setBackgroundImage:[UIImage imageNamed:@"mulColor.png"] forState:UIControlStateNormal];
+        [_mulButton setBackgroundImage:[UIImage imageNamed:@"f12"] forState:UIControlStateNormal];
         [_mulButton addTarget:self action:@selector(clickMulButton:) forControlEvents:UIControlEventTouchUpInside];
         _mulButton.layer.cornerRadius = 15;
         _mulButton.layer.masksToBounds = YES;
@@ -343,12 +340,12 @@ const static CGFloat min_height = 5;
 - (void)setFlag:(BOOL)flag{
     _flag = flag;
     if (flag) {
-        [self.singleButton setBackgroundImage:[UIImage imageNamed:@"selected.png"] forState:UIControlStateNormal];
-        [self.mulButton setImage:[UIImage new] forState:UIControlStateNormal];
+//        [self.singleButton setBackgroundImage:[UIImage imageNamed:@"selected.png"] forState:UIControlStateNormal];
+//        [self.mulButton setImage:[UIImage new] forState:UIControlStateNormal];
     }
     else {
-        [self.singleButton setBackgroundImage:[UIImage new] forState:UIControlStateNormal];
-        [self.mulButton setImage:[UIImage imageNamed:@"selected.png"] forState:UIControlStateNormal];
+//        [self.singleButton setBackgroundImage:[UIImage new] forState:UIControlStateNormal];
+//        [self.mulButton setImage:[UIImage imageNamed:@"selected.png"] forState:UIControlStateNormal];
     }
 }
 

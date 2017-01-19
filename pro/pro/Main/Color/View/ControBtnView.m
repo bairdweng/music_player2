@@ -12,8 +12,6 @@
 -(id)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self){
-        
-        
         UILabel *lable_1 = [UILabel new];
         lable_1.text = @"闪烁";
         lable_1.textColor = THETIMECOLOR;

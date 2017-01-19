@@ -156,15 +156,11 @@ const static CGFloat columnMargin = 20;
             }
         }
     }];
-    
     [[BabyBluetooth shareBabyBluetooth]setBlockOnDidWriteValueForDescriptor:^(CBDescriptor *descriptor, NSError *error) {
         if (error){
             [self showMiddleHint:error.description WithLoading:YES];
-            
         }
     }];
-    
-    
 }
 //连接成功的处理
 -(void)ConnectSucessDeal{

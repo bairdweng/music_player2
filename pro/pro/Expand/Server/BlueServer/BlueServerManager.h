@@ -16,6 +16,7 @@
 @property(nonatomic,strong)CBPeripheral *currentPeripheral;
 @property (nonatomic, strong)CBCharacteristic *currentcharacteristic;
 @property(nonatomic,assign)BOOL isSender;//是否发生请求。
+@property(nonatomic,assign)int mode;//模式
 + (instancetype)sharedInstance;
 - (void)sendData: (NSData *)data;
 - (void)sendQueryData:(NSData *)data;

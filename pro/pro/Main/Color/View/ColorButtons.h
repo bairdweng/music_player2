@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ColorButtons : UIView
-
+@property(nonatomic,assign)NSInteger btnSelectIndex;
+-(void)reset;
 @end

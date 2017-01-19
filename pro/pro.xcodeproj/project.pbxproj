@@ -53,6 +53,7 @@
 		9911F9991E13CC0800A08E3E /* MusicListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9911F9941E13CC0800A08E3E /* MusicListCell.m */; };
 		992CC4431E1C911B003103B8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 992CC4421E1C911B003103B8 /* Images.xcassets */; };
 		993F94F61E2D0FF600D9818E /* UIColor+hexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 993F94F51E2D0FF600D9818E /* UIColor+hexColor.m */; };
+		9943DAAC1E30A37700B15E9A /* DeviceTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9943DAAB1E30A37700B15E9A /* DeviceTableView.m */; };
 		998C39621E252E630080A9A8 /* ServiceManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 998C39611E252E630080A9A8 /* ServiceManage.m */; };
 		99E9D82F1E2E60A200826FFB /* EFCircularSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 99E9D82E1E2E60A200826FFB /* EFCircularSliderView.m */; };
 		99E9D8321E2E681D00826FFB /* ColorButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = 99E9D8311E2E681D00826FFB /* ColorButtons.m */; };
@@ -155,6 +156,8 @@
 		992CC4421E1C911B003103B8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		993F94F41E2D0FF600D9818E /* UIColor+hexColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+hexColor.h"; sourceTree = "<group>"; };
 		993F94F51E2D0FF600D9818E /* UIColor+hexColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+hexColor.m"; sourceTree = "<group>"; };
+		9943DAAA1E30A37700B15E9A /* DeviceTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceTableView.h; sourceTree = "<group>"; };
+		9943DAAB1E30A37700B15E9A /* DeviceTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceTableView.m; sourceTree = "<group>"; };
 		998C39601E252E630080A9A8 /* ServiceManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceManage.h; path = ../../../Resorce/ServiceManage.h; sourceTree = "<group>"; };
 		998C39611E252E630080A9A8 /* ServiceManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceManage.m; path = ../../../Resorce/ServiceManage.m; sourceTree = "<group>"; };
 		99E9D82D1E2E60A200826FFB /* EFCircularSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EFCircularSliderView.h; sourceTree = "<group>"; };
@@ -290,6 +293,8 @@
 				99E9D8341E2E6C2800826FFB /* BLSliderView.m */,
 				99E9D8361E2E727200826FFB /* ControBtnView.h */,
 				99E9D8371E2E727200826FFB /* ControBtnView.m */,
+				9943DAAA1E30A37700B15E9A /* DeviceTableView.h */,
+				9943DAAB1E30A37700B15E9A /* DeviceTableView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -804,6 +809,7 @@
 				9911F9881E13B96100A08E3E /* NAKPlaybackIndicatorContentView.m in Sources */,
 				4278ADAB1DAB7E9C00A7184B /* VoiceHelper.m in Sources */,
 				9911F9821E13B96100A08E3E /* BaseHelper.m in Sources */,
+				9943DAAC1E30A37700B15E9A /* DeviceTableView.m in Sources */,
 				02E8EE601D8A7EC500C65F82 /* AppDelegate.m in Sources */,
 				99E9D8351E2E6C2800826FFB /* BLSliderView.m in Sources */,
 				99F6A8931E2D012B0002F477 /* NewColorViewController.m in Sources */,

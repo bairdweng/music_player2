@@ -8,9 +8,16 @@
 
 #import "EFCircularSliderView.h"
 #import "EFCircularSlider.h"
+#import "CMDModel.h"
+#import "BlueServerManager.h"
+@interface EFCircularSliderView(){
+    UIView *_centerView;
+    EFCircularSlider *_circularSlider;
+}
+@end
+
+
 @implementation EFCircularSliderView
-
-
 -(id)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self){
@@ -21,16 +28,15 @@
         [self addSubview:imageView];
         CGFloat width = self.frame.size.width-20;
         
-        EFCircularSlider *circularSlider = [[EFCircularSlider alloc]initWithFrame:CGRectMake((self.frame.size.width-width)/2, (self.frame.size.height-width)/2, width, width)];
-        [circularSlider addTarget:self action:@selector(circularSlidervalueChanged:) forControlEvents:UIControlEventValueChanged];
-        circularSlider.handleType = bigCircle;
-        circularSlider.minimumValue = 0;
-        circularSlider.maximumValue = 1;
-        circularSlider.currentValue = 0;
-        circularSlider.lineWidth = 20;
-        circularSlider.handleColor = THETIMECOLOR;
-        [self addSubview:circularSlider];
-        
+        _circularSlider = [[EFCircularSlider alloc]initWithFrame:CGRectMake((self.frame.size.width-width)/2, (self.frame.size.height-width)/2, width, width)];
+        [_circularSlider addTarget:self action:@selector(circularSlidervalueChanged:) forControlEvents:UIControlEventValueChanged];
+        _circularSlider.handleType = bigCircle;
+        _circularSlider.minimumValue = 0;
+        _circularSlider.maximumValue = 1;
+        _circularSlider.lineWidth = 20;
+        _circularSlider.currentValue = 0;
+        _circularSlider.handleColor = THETIMECOLOR;
+        [self addSubview:_circularSlider];
         
         CGFloat point_width = 80;
         UIView *centerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, point_width, point_width)];
@@ -39,14 +45,39 @@
         centerView.layer.borderColor = [UIColor blackColor].CGColor;
         centerView.layer.cornerRadius = centerView.frame.size.width/2;
         centerView.layer.masksToBounds = YES;
-        centerView.center = circularSlider.center;
+        centerView.center = _circularSlider.center;
         [self addSubview:centerView];
+        _centerView = centerView;
     }
     return self;
 }
 
--(void)circularSlidervalueChanged:(EFCircularSliderView *)SliderView{
+-(void)circularSlidervalueChanged:(EFCircularSlider *)SliderView{
+    static int temp;
+    if (temp == SliderView.currentValue * 1422) {
+        return;
+    }
+    temp = SliderView.currentValue * 1422;
+    UIColor *color = [[CMDModel sharedInstance] singleColor:temp];
+    _centerView.backgroundColor = color;
     
+    NSData *sendData = [[CMDModel sharedInstance] singleColorCMD:temp];
+    //NSLog(@"send data");
+    [[BlueServerManager sharedInstance] sendData:sendData];
+}
+-(void)setCurrentValue:(float)currentValue{
+    _currentValue = currentValue;
+    int angle = 0;
+    float value = _currentValue;
+    if(value > 0 && value < 0.25) {
+        angle = - (int)(value * 360);
+    }
+    else {
+        angle = (int)(360 - value * 360);
+    }
+    _circularSlider.currentValue = _currentValue;
+    [_circularSlider setPosition:angle];
+    [self circularSlidervalueChanged:_circularSlider];
 }
 /*
 // Only override drawRect: if you perform custom drawing.

@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface BLSliderView : UIView
+@property(nonatomic,assign)double SliderValue1;
+
+@property(nonatomic,assign)double SliderValue2;
 
 @end
