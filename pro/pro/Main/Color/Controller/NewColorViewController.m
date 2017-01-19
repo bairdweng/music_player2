@@ -84,6 +84,8 @@
         _deviceframe.origin.x = -_deviceTableView.frame.size.width;
         [UIView animateWithDuration:0.5 animations:^{
             _deviceTableView.frame = _deviceframe;
+        }completion:^(BOOL finished) {
+            [self showDissMiss];
         }];
     }
 }
@@ -127,6 +129,17 @@
     }
     CGFloat size_size = SCREEN_WIDTH * 0.7;
     _efCircularSliderView = [[EFCircularSliderView alloc]initWithFrame:CGRectMake((SCREEN_WIDTH-size_size)/2, CGRectGetMaxY(_leftBtn.frame)+10, size_size, size_size)];
+    [_efCircularSliderView getEventBlck:^(double value){
+        NSLog(@"value=================%f",value);
+        if ([BlueServerManager sharedInstance].mode == 1) {
+            [BlueServerManager sharedInstance].mode = 0;
+            _controBtnView.controMode = 0;
+        }
+        else if ([BlueServerManager sharedInstance].mode == 3){
+            [BlueServerManager sharedInstance].mode = 2;
+            _controBtnView.controMode = 2;
+        }        
+    }];
     [_showScrollView addSubview:_efCircularSliderView];
     
     CGFloat colorButton_Width = SCREEN_WIDTH * 0.8;

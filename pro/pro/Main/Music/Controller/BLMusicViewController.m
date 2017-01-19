@@ -57,9 +57,6 @@ const static CGFloat min_height = 5;
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor blackColor];
 
-    
-    
-    
     VoiceHelper *voiceHelper = [VoiceHelper sharedInstance];
     voiceHelper.delegate = self;
     _showScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-48)];
@@ -115,6 +112,7 @@ const static CGFloat min_height = 5;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    _frequencyView.volume = 0;
     BOOL flag = [[[NSUserDefaults standardUserDefaults]objectForKey:isConnectted] boolValue];
     if (!flag) {
         [[VoiceHelper sharedInstance] pause];
@@ -123,7 +121,7 @@ const static CGFloat min_height = 5;
     else {
         _titleLabel.text = @"RGB Bluetooth";
         [[VoiceHelper sharedInstance] record];
-        [[BlueServerManager sharedInstance] sendData:[[CMDModel sharedInstance] musicCMD:0.1]];
+        [[BlueServerManager sharedInstance] sendData:[[CMDModel sharedInstance] musicCMD:0]];
     }
 }
 - (void)viewDidDisappear:(BOOL)animated {

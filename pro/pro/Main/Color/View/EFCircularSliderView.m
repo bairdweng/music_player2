@@ -13,6 +13,7 @@
 @interface EFCircularSliderView(){
     UIView *_centerView;
     EFCircularSlider *_circularSlider;
+    EFCircularSliderViewEventBlock _eventBlock;
 }
 @end
 
@@ -65,6 +66,9 @@
     NSData *sendData = [[CMDModel sharedInstance] singleColorCMD:temp];
     //NSLog(@"send data");
     [[BlueServerManager sharedInstance] sendData:sendData];
+    if (_eventBlock) {
+        _eventBlock(SliderView.currentValue);
+    }
 }
 -(void)setCurrentValue:(float)currentValue{
     _currentValue = currentValue;
@@ -79,6 +83,10 @@
     _circularSlider.currentValue = _currentValue;
     [_circularSlider setPosition:angle];
     [self circularSlidervalueChanged:_circularSlider];
+    
+}
+-(void)getEventBlck:(EFCircularSliderViewEventBlock)block{
+    _eventBlock = block;
 }
 /*
 // Only override drawRect: if you perform custom drawing.

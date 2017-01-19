@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^EFCircularSliderViewEventBlock)(double value);
+
+
+
 @interface EFCircularSliderView : UIView
 @property (nonatomic) float currentValue;
+-(void)getEventBlck:(EFCircularSliderViewEventBlock)block;
+
 @end
