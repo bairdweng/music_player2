@@ -111,7 +111,7 @@
     
     _titleLabel = [UILabel new];
     _titleLabel.textColor = [UIColor whiteColor];
-    _titleLabel.text = @"蓝牙未连接";
+    _titleLabel.text = NSLocalizedString(@"status", nil);
     _titleLabel.textAlignment = 1;
     [_showScrollView addSubview:_titleLabel];
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -130,7 +130,6 @@
     CGFloat size_size = SCREEN_WIDTH * 0.7;
     _efCircularSliderView = [[EFCircularSliderView alloc]initWithFrame:CGRectMake((SCREEN_WIDTH-size_size)/2, CGRectGetMaxY(_leftBtn.frame)+10, size_size, size_size)];
     [_efCircularSliderView getEventBlck:^(double value){
-        NSLog(@"value=================%f",value);
         if ([BlueServerManager sharedInstance].mode == 1) {
             [BlueServerManager sharedInstance].mode = 0;
             _controBtnView.controMode = 0;
@@ -191,7 +190,7 @@
         [BabyBluetooth shareBabyBluetooth].having(peripheral).connectToPeripherals().discoverServices().discoverCharacteristics()
         .readValueForCharacteristic().discoverDescriptorsForCharacteristic().readValueForDescriptors().begin();
         [BlueServerManager sharedInstance].currentPeripheral = peripheral;
-        [WeakSelf showMiddleHint:@"正在连接" WithLoading:YES];
+        [WeakSelf showMiddleHint:NSLocalizedString(@"blue", nil)WithLoading:YES];
         [BlueServerManager sharedInstance].isSender = YES;
     }];
     [self bluetoothConfig];

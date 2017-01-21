@@ -88,7 +88,7 @@
 		4279D75C1DA9D98300CA60EE /* EFCircularSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EFCircularSlider.m; sourceTree = "<group>"; };
 		429541631D98B10600AB9009 /* BlueServerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueServerManager.h; sourceTree = "<group>"; };
 		429541641D98B10600AB9009 /* BlueServerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueServerManager.m; sourceTree = "<group>"; };
-		42DA31F11DC2325D00487322 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		42DA31F11DC2325D00487322 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; lineEnding = 0; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		42DA31F31DC2335200487322 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		42DA31F41DC2335200487322 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		57EA328A5F6EFA2D4F1F4328 /* Pods-pro.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pro.release.xcconfig"; path = "Pods/Target Support Files/Pods-pro/Pods-pro.release.xcconfig"; sourceTree = "<group>"; };
@@ -158,6 +158,8 @@
 		993F94F51E2D0FF600D9818E /* UIColor+hexColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+hexColor.m"; sourceTree = "<group>"; };
 		9943DAAA1E30A37700B15E9A /* DeviceTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceTableView.h; sourceTree = "<group>"; };
 		9943DAAB1E30A37700B15E9A /* DeviceTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceTableView.m; sourceTree = "<group>"; };
+		995DED561E3346FD00D3C1A0 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		995DED571E3346FD00D3C1A0 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		998C39601E252E630080A9A8 /* ServiceManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceManage.h; path = ../../../Resorce/ServiceManage.h; sourceTree = "<group>"; };
 		998C39611E252E630080A9A8 /* ServiceManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceManage.m; path = ../../../Resorce/ServiceManage.m; sourceTree = "<group>"; };
 		99E9D82D1E2E60A200826FFB /* EFCircularSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EFCircularSliderView.h; sourceTree = "<group>"; };
@@ -696,6 +698,7 @@
 				en,
 				Base,
 				"zh-Hans",
+				ja,
 			);
 			mainGroup = 02E8EE391D8A7E0C00C65F82;
 			productRefGroup = 02E8EE431D8A7E0C00C65F82 /* Products */;
@@ -834,6 +837,7 @@
 			children = (
 				02E8EE541D8A7E0C00C65F82 /* Base */,
 				42DA31F31DC2335200487322 /* zh-Hans */,
+				995DED561E3346FD00D3C1A0 /* ja */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -843,6 +847,7 @@
 			children = (
 				42DA31F11DC2325D00487322 /* en */,
 				42DA31F41DC2335200487322 /* zh-Hans */,
+				995DED571E3346FD00D3C1A0 /* ja */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

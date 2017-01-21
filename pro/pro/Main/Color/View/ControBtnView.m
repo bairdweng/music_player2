@@ -14,14 +14,15 @@
     self = [super initWithFrame:frame];
     if (self){
         UILabel *lable_1 = [UILabel new];
-        lable_1.text = @"闪烁";
+        lable_1.text = NSLocalizedString(@"strobe", nil);;
+
         lable_1.textColor = THETIMECOLOR;
         lable_1.textAlignment = 1;
         [self addSubview:lable_1];
         
         UILabel *lable_2 = [UILabel new];
         lable_2.textColor = THETIMECOLOR;
-        lable_2.text = @"渐变";
+        lable_2.text = NSLocalizedString(@"plusating", nil);;
         lable_2.textAlignment = 1;
         [self addSubview:lable_2];
         [lable_1 mas_makeConstraints:^(MASConstraintMaker *make) {

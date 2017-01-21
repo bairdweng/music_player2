@@ -220,7 +220,7 @@ const static CGFloat min_height = 5;
     
     
     UILabel *Lable1 = [UILabel new];
-    Lable1.text = @"闪烁";
+    Lable1.text = NSLocalizedString(@"strobe", nil);;
     Lable1.textColor = [UIColor whiteColor];
     Lable1.textAlignment = 1;
     [_showScrollView addSubview:Lable1];
@@ -231,7 +231,7 @@ const static CGFloat min_height = 5;
     
     
     UILabel *Lable2 = [UILabel new];
-    Lable2.text = @"渐变";
+    Lable2.text = NSLocalizedString(@"plusating", nil);;
     Lable2.textColor = [UIColor whiteColor];
     Lable2.textAlignment = 1;
     [_showScrollView addSubview:Lable2];
