@@ -36,9 +36,7 @@
         }];
         
         
-        
         UIButton *btn_1 = [UIButton buttonWithType:UIButtonTypeCustom];
-      
         [btn_1 setImage:[UIImage imageNamed:@"f2"] forState:UIControlStateNormal];
         [self addSubview:btn_1];
         

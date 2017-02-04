@@ -231,7 +231,7 @@ const static CGFloat min_height = 5;
     
     
     UILabel *Lable2 = [UILabel new];
-    Lable2.text = NSLocalizedString(@"plusating", nil);;
+    Lable2.text = NSLocalizedString(@"plusating", nil);
     Lable2.textColor = [UIColor whiteColor];
     Lable2.textAlignment = 1;
     [_showScrollView addSubview:Lable2];

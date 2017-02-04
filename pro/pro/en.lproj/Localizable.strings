@@ -9,4 +9,7 @@
 "status" = "Disconnected";
 "title" = "Note";
 "sure" = "YES";
-"blue" = "Connecting the bluethooth...";
+"blueContent" = "Connecting the bluethooth...";
+"blueError" = "the connection fails";
+"blueSucess" = "the connection is successful";
+"blueDissContent" = "Bluetooth has been disconnected";

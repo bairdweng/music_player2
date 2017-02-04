@@ -9,4 +9,7 @@
 "status" = "蓝牙未连接";
 "title" = "温馨提示";
 "sure" = "确定";
-"blue" = "蓝牙正在连接。。。";
+"blueContent" = "正在连接";
+"blueError" = "连接失败";
+"blueSucess" = "连接成功";
+"blueDissContent" = "蓝牙已断开";

@@ -137,7 +137,10 @@
         else if ([BlueServerManager sharedInstance].mode == 3){
             [BlueServerManager sharedInstance].mode = 2;
             _controBtnView.controMode = 2;
-        }        
+        }
+        
+        
+        [_colorButtons reset];
     }];
     [_showScrollView addSubview:_efCircularSliderView];
     
@@ -190,7 +193,7 @@
         [BabyBluetooth shareBabyBluetooth].having(peripheral).connectToPeripherals().discoverServices().discoverCharacteristics()
         .readValueForCharacteristic().discoverDescriptorsForCharacteristic().readValueForDescriptors().begin();
         [BlueServerManager sharedInstance].currentPeripheral = peripheral;
-        [WeakSelf showMiddleHint:NSLocalizedString(@"blue", nil)WithLoading:YES];
+        [WeakSelf showMiddleHint:NSLocalizedString(@"blueContent", nil)WithLoading:YES];
         [BlueServerManager sharedInstance].isSender = YES;
     }];
     [self bluetoothConfig];
@@ -238,17 +241,17 @@
         _deviceTableView.dataSoureArray = peripherals;
     }];
     [[BabyBluetooth shareBabyBluetooth]setBlockOnFailToConnect:^(CBCentralManager *central, CBPeripheral *peripheral, NSError *error) {
-        [self showMiddleHint:@"连接失败" WithLoading:NO];
+        [self showMiddleHint:NSLocalizedString(@"blueError", nil) WithLoading:NO];
         [[BabyBluetooth shareBabyBluetooth]cancelScan];
         [self ConnectSucessError];
     }];
     [[BabyBluetooth shareBabyBluetooth]setBlockOnConnected:^(CBCentralManager *central, CBPeripheral *peripheral){
         self.isShow = NO;
-        [self showMiddleHint:@"连接成功" WithLoading:NO];
+        [self showMiddleHint:NSLocalizedString(@"blueSucess", nil) WithLoading:NO];
         [self ConnectSucessDeal];
     }];
     [[BabyBluetooth shareBabyBluetooth]setBlockOnDisconnect:^(CBCentralManager *central, CBPeripheral *peripheral, NSError *error) {
-        [self showMiddleHint:@"蓝牙已断开" WithLoading:NO];
+        [self showMiddleHint:NSLocalizedString(@"blueDissContent", nil) WithLoading:NO];
         [self ConnectSucessError];
     }];
     //获取最新的值
@@ -312,7 +315,6 @@
  @param bytes
  */
 -(void)didSendQueryData:(Byte [])bytes{
- 
     if(bytes[0] == 1) {
         [BlueServerManager sharedInstance].mode = 0;
     }

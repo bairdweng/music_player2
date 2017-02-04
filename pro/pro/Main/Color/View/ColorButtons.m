@@ -22,7 +22,7 @@
 -(id)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self){
-        CGSize size = CGSizeMake(20, 40);
+        CGSize size = CGSizeMake(25, 40);
         UIColor *pick = [UIColor colorWithRed:1.0 green:0 blue:1.0 alpha:1.0];
         UIColor *lowblue = [UIColor colorWithRed:0 green:1.0 blue:1.0 alpha:1.0];
         _Colors = @[[UIColor redColor], [UIColor blueColor], [UIColor greenColor], pick, [UIColor yellowColor], lowblue, [UIColor whiteColor]];

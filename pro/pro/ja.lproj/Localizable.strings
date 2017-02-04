@@ -9,4 +9,7 @@
 "status" = "Bluetooth接続";
 "title" = "暖かいヒント";
 "sure" = "確定";
-"blue" = "Bluetoothがつながっている。。。";
+"blueContent" = "接続している";
+"blueError" = "失敗をつなぐ";
+"blueSucess" = "連結成功";
+"blueDissContent" = "bluetoothが寸断";
